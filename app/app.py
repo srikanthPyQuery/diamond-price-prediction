@@ -26,8 +26,8 @@ st.set_page_config(page_title="Diamond Price Predictor", page_icon="💎", layou
 
 @st.cache_resource
 def load_final_model():
-    # Ensure 'diamond_final_pro_model.pkl' is in the same folder as this script
-    return joblib.load('diamond_final_pro_model.pkl')
+    # Ensure 'model.pkl' is in the same folder as this script
+    return joblib.load('model.pkl')
 
 try:
     model = load_final_model()
