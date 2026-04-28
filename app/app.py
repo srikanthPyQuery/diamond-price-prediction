@@ -24,16 +24,16 @@ def smart_engineering(X):
 # --- 2. MODEL LOADING ---
 st.set_page_config(page_title="Diamond Price Predictor", page_icon="💎", layout="wide")
 
+import os
+import joblib
+
 @st.cache_resource
 def load_final_model():
-    # Ensure 'model.pkl' is in the same folder as this script
-    return joblib.load('model.pkl')
-
-try:
-    model = load_final_model()
-except Exception as e:
-    st.error(f"Critical Error: Could not load the model file. {e}")
-    st.stop()
+    # Get the directory where app.py is located
+    base_path = os.path.dirname(__file__)
+    # Join it with the filename
+    model_path = os.path.join(base_path, 'model.pkl')
+    return joblib.load(model_path)
 
 # --- 3. USER INTERFACE ---
 st.title("💎 Professional Diamond Valuation Tool")
